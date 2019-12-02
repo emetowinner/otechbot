@@ -48,4 +48,3 @@ def main(keywords):
 if __name__ == "__main__":
     while True:
         main(["#OwerriTech",])
-        time.sleep(300)
