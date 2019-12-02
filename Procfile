@@ -1,0 +1,1 @@
+web:worker: python bot/bot.py
