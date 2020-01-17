@@ -15,20 +15,22 @@ class RetweetListener(tweepy.StreamListener):
         logger.info(f"Processing tweet id {tweet.id}")
         if tweet.in_reply_to_status_id is not None or \
             tweet.user.id == self.me.id:
-            # This tweet is a reply or I'm its author so, ignore it
+            # Ignore the tweet because is a reply or I'm its author 
             return
         if not tweet.favorited:
-            # Mark it as Liked, since we have not done it yet
+            # Mark it as Liked
             try:
                 tweet.favorite()
             except Exception as e:
                 logger.error("Error on fav", exc_info=True)
         if not tweet.retweeted:
-            # Retweet, since we have not retweeted it yet
+            # Retweet, if it haven't retweeted yet
             try:
                 tweet.retweet()
                 logger.info(f"Repling tweet id {tweet.id}")
-                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @oscaimo @ingressiveIMSU @dsc_futo', in_reply_to_status_id=tweet.id)
+                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @oscaimo @ingressiveIMSU @dsc_futo @dotnetse_ng @mtcowerri @gdgowerri @MpactTha', in_reply_to_status_id=tweet.id)
+                for follower in tweepy.Cursor(self.api.followers).items():
+                    follower.follow()              
             except Exception:
                 logger.error("Error on fav and retweet", exc_info=True)
             
