@@ -20,3 +20,14 @@ def create_api():
         raise e
     logger.info("API created")
     return api
+
+
+
+    """
+export CONSUMER_KEY="eObu9q7cVfkJYMCwUmXtnVwXr"
+export CONSUMER_SECRET="v7O3anwt4KdX7na3Iu4m1f06FuDmRJXX5ugJvaOtTPqnQuHqhm"
+export ACCESS_TOKEN="1199602560472166400-N2IzWFM2qwyPx9Pn4h42ibKp6Nco5a"
+export ACCESS_TOKEN_SECRET="Kxn7yES5VtNNIsQ4JWPMa2BvflR9rXgJUKGbKLfOc6fdp"
+
+
+    """
