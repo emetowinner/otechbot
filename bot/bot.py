@@ -28,7 +28,15 @@ class RetweetListener(tweepy.StreamListener):
             try:
                 tweet.retweet()
                 logger.info(f"Repling tweet id {tweet.id}")
-                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @oscaimo @ingressiveIMSU @dsc_futo @dotnetse_ng @mtcowerri @gdgowerri @MpactTha', in_reply_to_status_id=tweet.id)            
+                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @oscaimo @ingressiveIMSU @dsc_futo @dotnetse_ng @mtcowerri @gdgowerri @MpactTha', in_reply_to_status_id=tweet.id)
+                logger.info("Retrieving and following followers")
+                try:
+                    for follower in tweepy.Cursor(self.api.followers).items():
+                    if not follower.following:
+                        logger.info(f"Following {follower.name}")
+                        follower.follow()     
+                except Exception:
+                    logger.error("Error occured while trying to follow", exc_info=True)       
             except Exception:
                 logger.error("Error on fav and retweet", exc_info=True)
             
@@ -41,8 +49,6 @@ class RetweetListener(tweepy.StreamListener):
     
 def main(keywords):
     api = create_api()
-    for follower in tweepy.Cursor(api.followers).items():
-        follower.follow()  
     tweets_listener = RetweetListener(api)
     stream = tweepy.Stream(api.auth, tweets_listener)
     stream.filter(track=keywords, languages=["en"])
