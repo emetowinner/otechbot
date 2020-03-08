@@ -28,8 +28,8 @@ class RetweetListener(tweepy.StreamListener):
             try:
                 tweet.retweet()
                 logger.info(f"Repling tweet id {tweet.id}")
-                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu ', in_reply_to_status_id=tweet.id)
-                self.api.update_status(f'@{tweet.user.screen_name} @oscaimo @ingressiveIMSU @dsc_futo @dotnetse_ng @mtcowerri @gdgowerri @thaimpactcircle ', in_reply_to_status_id=tweet.id)
+                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @Genesysclubfuto @BleauTechOrg ', in_reply_to_status_id=tweet.id)
+                self.api.update_status(f'@{tweet.user.screen_name} @oscaimo @ingressiveIMSU @dsc_futo @dotnetseNG @mtcowerri @gdgowerri @thaimpactcircle ', in_reply_to_status_id=tweet.id)
             except Exception:
                 logger.error("Error on fav and retweet", exc_info=True)
                 
