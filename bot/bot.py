@@ -61,4 +61,4 @@ def main(keywords):
 
 
 if __name__ == "__main__":
-    main(["OwerriTech", "owerritech", "Owerritech", "owerriTech","imo covid19","imo covid-19","IMO COVID19","IMO COVID-19"])
+    main(["OwerriTech", "owerritech", "Owerritech", "owerriTech","imo-covid19","imo-covid-19","IMO-COVID19","IMO-COVID-19"])
