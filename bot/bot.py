@@ -22,14 +22,22 @@ class RetweetListener(tweepy.StreamListener):
             try:
                 tweet.favorite()
             except Exception as e:
-                logger.error("Error on fav", exc_info=True)
+                logger.error("Error occured while liking the tweet", exc_info=True)
+                print(e)
         if not tweet.retweeted:
             # Retweet, if it haven't retweeted yet
             try:
                 tweet.retweet()
                 logger.info(f"Repling tweet id {tweet.id}")
-                self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @Genesysclubfuto @BleauTechOrg ', in_reply_to_status_id=tweet.id)
-                self.api.update_status(f'@{tweet.user.screen_name} @oscaimo @ingressiveIMSU @dsc_futo @dotnetseNG @mtcowerri @gdgowerri @thaimpactcircle ', in_reply_to_status_id=tweet.id)
+                if 'COVID-19' in tweet_post.text:
+                    self.api.update_status(f'@{tweet.user.screen_name} STAY SAFE! STAY AT HOME!! @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @Genesysclubfuto @BleauTechOrg ', in_reply_to_status_id=tweet.id)
+                    self.api.update_status(f'@{tweet.user.screen_name} @oscaimo @ingressiveIMSU @dsc_futo @dotnetseNG @mtcowerri @gdgowerri @thaimpactcircle @losintech', in_reply_to_status_id=tweet.id)
+                    tweet_post = self.api.get_status(id=tweet.id)
+                else:                    
+                    self.api.update_status(f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @Genesysclubfuto @BleauTechOrg ', in_reply_to_status_id=tweet.id)
+                    self.api.update_status(f'@{tweet.user.screen_name} @oscaimo @ingressiveIMSU @dsc_futo @dotnetseNG @mtcowerri @gdgowerri @thaimpactcircle ', in_reply_to_status_id=tweet.id)
+                    tweet_post = self.api.get_status(id=tweet.id)
+
             except Exception:
                 logger.error("Error on fav and retweet", exc_info=True)
                 
