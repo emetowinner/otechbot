@@ -1,3 +1,4 @@
 .vscode/
-tweetbot_venv/
+venv/
 owerri-tech-bot.tar.gz
+bot/__pycache__/
