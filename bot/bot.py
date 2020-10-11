@@ -32,9 +32,7 @@ class RetweetListener(tweepy.StreamListener):
                 tweet.retweet()
                 logger.info(f"Repling tweet id {tweet.id}")
                 self.api.update_status(
-                    f'@{tweet.user.screen_name} [[STAY SAFE! STAY AT HOME!! Visit (http://covid19.ncdc.gov.ng) for updates]] @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @Genesysclubfuto @BleauTechOrg ', in_reply_to_status_id=tweet.id)
-                self.api.update_status(
-                    f'@{tweet.user.screen_name} @oscaimo @ingressiveIMSU @dsc_futo @dotnetseNG @mtcowerri @gdgowerri @thaimpactcircle @losintech', in_reply_to_status_id=tweet.id)
+                    f'@{tweet.user.screen_name} @mtechdevimo @WPowerri @owerriTechHub @OluakaInstitute @LaravelOwerri @WomenProTech1 @pyladiesimo @dscimsu @Genesysclubfuto @BleauTechOrg @oscaimo @ingressiveIMSU @dsc_futo @dotnetseNG @mtcowerri @gdgowerri @thaimpactcircle @losintech', in_reply_to_status_id=tweet.id)
 
             except Exception:
                 logger.error("Error on fav and retweet", exc_info=True)
@@ -61,4 +59,4 @@ def main(keywords):
 
 
 if __name__ == "__main__":
-    main(["OwerriTech", "owerritech", "Owerritech", "owerriTech","imo-covid19","imo-covid-19","IMO-COVID19","IMO-COVID-19"])
+    main(["OwerriTech", "owerritech", "Owerritech", "owerriTech",'EndSARS', 'EndSarsNow'])
