@@ -1,4 +1,4 @@
 .vscode/
-env/
+venv/
 owerri-tech-bot.tar.gz
 bot/__pycache__/
